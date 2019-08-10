@@ -42,5 +42,16 @@ class order():
         self.overtime = 0
 
 
-class Maingame():
+class Main():
+    money = 1000
+    rider_number = 0,
+    time = 0
+    temp = 0
+    over = 0
+    finish = 0
+    all = 0
+    riders = [] # 存储所有的骑手
+    while not GAMEOVER:
+        
+
     
