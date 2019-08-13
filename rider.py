@@ -19,7 +19,7 @@ class Rider(pygame.sprite.Sprite):
     # 运动
     def move(self):
         if self.state == 0: # 如果空闲
-            pass
+            print('555')
         elif self.state == 1: # 如果去取餐
             # 确定目标点
             x = self.orders[0][0] - 15
