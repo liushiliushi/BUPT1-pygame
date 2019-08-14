@@ -4,7 +4,7 @@ from rider import *
 import threading
 import input
 import output
-print(output.path)
+
 
 
 riders = [] # 骑手序列
@@ -30,7 +30,7 @@ def main():
 
     while True:
         buy_riders()
-        print(riders)
+        print('***', riders)
         output.cartoon_output()
         
     

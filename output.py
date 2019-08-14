@@ -11,7 +11,7 @@ def cartoon_output():
     clock = pygame.time.Clock()
     # 绘制屏幕
     global screen
-    global main.riders
+    global riders
     screen.fill((255, 255, 204))
     # 绘制房子
     for i in range(0, 900, 100):
