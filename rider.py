@@ -1,4 +1,5 @@
 import pygame
+import globalvar as gl
 
 class Rider(pygame.sprite.Sprite):
     def __init__(self):
@@ -18,42 +19,43 @@ class Rider(pygame.sprite.Sprite):
 
     # 运动
     def move(self):
+        # 确定目标点x, y
         if self.state == 0: # 如果空闲
-            print('555')
-        elif self.state == 1: # 如果去取餐
-            # 确定目标点
-            x = self.orders[0][0] - 15
-            y = self.orders[0][1] - 15
+            pass
+        else:
+            if self.state == 1: # 如果去取餐
+                # 确定目标点
+                x = self.orders[0][0] - 15
+                y = self.orders[0][1] - 15
+                
+            else: # 如果去送餐
+                # 确定目标点
+                x = self.orders[0][2] - 15
+                y = self.orders[0][3] - 15
             
-        else: # 如果去送餐
-            # 确定目标点
-            x = self.orders[0][2] - 15
-            y = self.orders[0][3] - 15
-        
-        # x, y 为目标点
-        if y == self.rect.top: # 如果骑手和目标点在一条街上
-            if x < self.rect.left: # 如果目标点在骑手左侧
-                self.rect.left -= self.speed # 骑手向左运动
-            elif x > self.rect.left : # 如果目标点在骑手右侧
-                self.rect.left += self.speed # 骑手向右运动
-            else : # 如果骑手已到达目标点
-                pass
-        elif y > self.rect.top: # 如果骑手在目标点下方
-            if (self.rect.left + 15) % 100 == 0: # 如果骑手在纵街道上或者在交叉点上
-                self.rect.top += self.speed
-            else :
-                if x <= self.rect.left: # 如果目标点在骑手左侧或者同一方位
+            if y == self.rect.top: # 如果骑手和目标点在一条街上
+                if x < self.rect.left: # 如果目标点在骑手左侧
                     self.rect.left -= self.speed # 骑手向左运动
-                else: # 如果目标点在骑手右侧
+                elif x > self.rect.left : # 如果目标点在骑手右侧
                     self.rect.left += self.speed # 骑手向右运动
-        else: # 如果骑手在目标点上方
-            if (self.rect.left + 15) % 100 == 0: # 如果骑手在纵街道上或者在交叉点上
-                self.rect.top - self.speed
-            else :
-                if x <= self.rect.left: # 如果目标点在骑手左侧或者同一方位
-                    self.rect.left -= self.speed # 骑手向左运动
-                else: # 如果目标点在骑手右侧
-                    self.rect.left += self.speed # 骑手向右运动
+                else : # 如果骑手已到达目标点
+                    pass
+            elif y > self.rect.top: # 如果骑手在目标点下方
+                if (self.rect.left + 15) % 100 == 0: # 如果骑手在纵街道上或者在交叉点上
+                    self.rect.top += self.speed
+                else :
+                    if x <= self.rect.left: # 如果目标点在骑手左侧或者同一方位
+                        self.rect.left -= self.speed # 骑手向左运动
+                    else: # 如果目标点在骑手右侧
+                        self.rect.left += self.speed # 骑手向右运动
+            else: # 如果骑手在目标点上方
+                if (self.rect.left + 15) % 100 == 0: # 如果骑手在纵街道上或者在交叉点上
+                    self.rect.top - self.speed
+                else :
+                    if x <= self.rect.left: # 如果目标点在骑手左侧或者同一方位
+                        self.rect.left -= self.speed # 骑手向左运动
+                    else: # 如果目标点在骑手右侧
+                        self.rect.left += self.speed # 骑手向右运动
 
 
 

@@ -1,5 +1,6 @@
 import main
 import pygame
+import globalvar as gl
 
 bg_size = width, height = 800, 800 #屏幕大小尺寸
 screen = pygame.display.set_mode(bg_size) 
@@ -11,17 +12,16 @@ def cartoon_output():
     clock = pygame.time.Clock()
     # 绘制屏幕
     global screen
-    global riders
     screen.fill((255, 255, 204))
     # 绘制房子
     for i in range(0, 900, 100):
         for j in range(0, 900, 100):
             screen.blit(house, (i, j))
     # 绘制骑手
-    print(main.riders)
-    for each in main.riders:
+    print(gl.get_value('riders'))
+    for each in gl.get_value('riders'):
         print('444')
         each.move() # 改变骑手位置
         screen.blit(each.image, each.rect)
-    pygame.display.update() 
+    pygame.display.update() # 更新
     clock.tick(60) # 设置帧数
