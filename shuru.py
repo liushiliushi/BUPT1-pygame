@@ -3,6 +3,7 @@ import pygame
 import rider
 import globalvar as gl
 import sys
+from pygame.locals import *
 
 def change(coordinate):
     pos = []
@@ -16,7 +17,6 @@ def input_event():
     running = True
     tem_rider = rider.Rider # 暂时骑手
     while running:
-        print('2')
         print('#################',pygame.event.get())
         for event in pygame.event.get():
             print('3')
