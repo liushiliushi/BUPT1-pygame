@@ -10,22 +10,23 @@ house1 = pygame.image.load('C:/Users/lalala/Documents/GitHub/BUPT1-pygame/素材
 house = pygame.transform.scale(house1, (100, 100))
 pygame.display.set_caption('外卖订单派送系统')
 
-def buy_riders():
+def buy_riders(bianhao):
     while gl.get_value('money') >= 400:
         tem = gl.get_value('money')
         gl.set_value('money', tem - 300)
-        new_rider = rider.Rider()
+        new_rider = rider.Rider(bianhao) # 确定编号
+        gl.set_value('bianhao', bianhao + 1) # 编号+1
         tem = gl.get_value('riders')
         tem.append(new_rider)
         gl.set_value('riders',tem)
 
 def cartoon_output():
     clock = pygame.time.Clock()
+    global screen
     while True:
         # 确定是否要买骑手
-        buy_riders()
+        buy_riders(gl.get_value('bianhao'))
         # 绘制屏幕
-        global screen
         screen.fill((255, 255, 204))
         # 绘制房子
         for i in range(0, 900, 100):
