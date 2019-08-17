@@ -23,7 +23,7 @@ def buy_riders(bianhao):
 def cartoon_output():
     clock = pygame.time.Clock()
     global screen
-    while True:
+    while gl.get_value('running'):
         # 确定是否要买骑手
         buy_riders(gl.get_value('bianhao'))
         # 绘制屏幕

@@ -4,6 +4,7 @@ from rider import *
 import threading
 import output
 import globalvar as gl
+
 gl._init()  # initialize
 pygame.init()  # initialize
 
@@ -23,15 +24,16 @@ def main():
         coordinate = []  # 坐标
         gl.set_value('money', 1000)  # 设置钱
         gl.set_value('riders', [])
-        running = True
+        gl.set_value('running',True)
         t = threading.Thread(target=output.cartoon_output)
         # 输出
         t.start()
         # 输入
         click = 0
-        while running:
+        while gl.get_value('running'):
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
+                                gl.set_value('running', False)
                                 pygame.quit()
                                 sys.exit()
                         elif event.type == pygame.MOUSEBUTTONDOWN:

@@ -70,16 +70,27 @@ class Rider(pygame.sprite.Sprite):
                         self.spe = not self.spe # 不是特殊情况了
                         print('情况变正常')
                 else :
-                    if x < self.rect.left or self.spe: # 如果目标点在骑手左侧或者特殊情况
+                    if x < self.rect.left and self.spe: # 如果目标点在骑手左侧且为特殊情况
+                        print('向右运动' + '***')
+                        self.rect.left += self.speed
+                    elif (x < self.rect.left or self.spe): # 如果目标点在骑手左侧或者特殊情况
                         print('向左运动')
                         self.rect.left -= self.speed # 骑手向左运动
                     elif x == self.rect.left: # 如果目标点在骑手同一方位
                         print('在同一x方位，情况特殊')
                         self.spe = True # 特殊情况特殊对待
-                        self.rect.left -= self.speed # 骑手向左运动
+                        # 如果骑手在最左边
+                        if self.rect.left == 35:
+                            print('骑手在最左边,向右运动')
+                            self.rect.left += self.speed # 骑手向右运动
+                        # 如果骑手不在最左边
+                        else:
+                            self.rect.left -= self.speed # 骑手向左运动
                     elif x > self.rect.left and not self.spe: # 如果目标点在骑手右侧且不是特殊情况
                         print('向右运动')
                         self.rect.left += self.speed # 骑手向右运动
+                    
+
             else: # 如果骑手在目标点上方
                 print(self.rect)
                 print('骑手在上方')
@@ -89,16 +100,25 @@ class Rider(pygame.sprite.Sprite):
                     if self.spe:
                         self.spe = not self.spe # 不是特殊情况了
                 else :
-                    if x < self.rect.left or self.spe: # 如果目标点在骑手左侧
+                    if x < self.rect.left and self.spe: # 如果目标点在骑手左侧且为特殊情况
+                        print('向右运动')
+                        self.rect.left += self.speed
+                    elif x < self.rect.left or self.spe: # 如果目标点在骑手左侧
                         print('向左运动')
                         self.rect.left -= self.speed # 骑手向左运动
                     elif x == self.rect.left: # 如果目标点在骑手同一方位
                         print('在同一方位，情况特殊')
                         self.spe = True # 特殊情况特殊对待
-                        self.rect.left -= self.speed # 骑手向左运动
+                        # 如果骑手在最左边
+                        if self.rect.left == 35:
+                            self.rect.left += self.speed # 骑手向右运动
+                        # 如果骑手不在最左边
+                        else:
+                            self.rect.left -= self.speed # 骑手向左运动
                     elif x > self.rect.left and not self.spe: # 如果目标点在骑手右侧且不是特殊情况
                         print('向右运动')
                         self.rect.left += self.speed # 骑手向右运动
+                    
 
 
 
